@@ -1,0 +1,10 @@
+---
+- hosts: test
+  become: yes
+  vars:
+   package_name: apache2
+  tasks: 
+  - name: install webserver
+    package:
+     name: "{{ package_name }}"
+     state: present

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install apache server
+    package:
+      name: "{{ package_name }}"
+      state: present
+    notify:
+    - restart apache server
+  handlers: 
+  - name: restart apache server
+    service:
+      name: "{{ package_name }}"
+      state: restarted
