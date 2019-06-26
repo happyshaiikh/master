@@ -1,0 +1,13 @@
+---
+- hosts: ubuntu
+  become: yes
+  roles:
+  - sometomcat
+  tasks:
+  - get_url:
+      src: https://raw.githubusercontent.com/happyshaiikh/php.info/master/info.php
+      dest: /etc/tomcat
+    notify:
+    - restart tomcat
+  handlers:
+  - name: restart tomcat
